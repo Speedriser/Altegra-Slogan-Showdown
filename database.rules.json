@@ -52,8 +52,7 @@
         },
         "currentMatchup": {
           "roundIdx": { ".validate": "newData.isNumber()" },
-          "matchupIdx": { ".validate": "newData.isNumber()" },
-          "startedAt": { ".validate": "newData.isNumber()" }
+          "matchupIdx": { ".validate": "newData.isNumber()" }
         },
         "votes": {
           "$mid": {

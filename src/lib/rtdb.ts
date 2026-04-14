@@ -145,7 +145,6 @@ export async function nextMatchup(code: string, bracket: Bracket): Promise<void>
     currentMatchup: {
       roundIdx: next.roundIdx,
       matchupIdx: next.matchupIdx,
-      startedAt: serverTimestamp(),
     },
   });
 }

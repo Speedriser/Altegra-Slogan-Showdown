@@ -80,9 +80,11 @@ so deep-links like `/?r=ABCD` resolve to the SPA.
 3. **Bracket preview** — the app shuffles submissions into a
    single-elimination bracket (top seeds get byes if the count isn't a
    power of 2). Host presses *Begin next matchup* to start voting.
-4. **Voting** — one matchup at a time, shown to everyone. 20-second timer
-   per round, live vote bars. Winner is decided by majority; ties go to
-   the left slot (already shuffled). Host advances with *Next matchup*.
+4. **Voting** — one matchup at a time, shown to everyone. Live vote bars
+   update as each person taps a card. No timer — the host watches the
+   "X of Y voted" counter and presses *Close voting* when the room is
+   ready. Winner is decided by majority; ties go to the left slot
+   (already shuffled). Host then presses *Begin next matchup* to advance.
 5. **Winner** — confetti, the winning slogan huge on screen, author
    revealed after a beat, then the full tournament recap.
 
@@ -94,7 +96,7 @@ src/
 ├── firebase.ts            # initializeApp, getDatabase, signInAnon
 ├── types.ts               # Room, Player, Submission, Bracket types
 ├── components/            # one file per screen/widget
-├── hooks/                 # useRoom, usePlayer, useCountdown
+├── hooks/                 # useRoom, usePlayer
 └── lib/                   # bracket logic, code generation, storage, rtdb
 ```
 
@@ -104,10 +106,11 @@ src/
   `localStorage`. Refreshing reconnects silently. Close the tab for a long
   time and Firebase will also mark them `online: false` via
   `onDisconnect`.
-- **Timer** — the 20-second voting window is computed client-side from
-  the RTDB `serverTimestamp` written when the matchup starts. The *host*
-  is the authoritative one who writes the matchup winner (either when
-  everyone has voted or the timer expires); other clients watch.
+- **Host-paced voting** — there is no countdown timer. The host closes
+  voting manually when the room has had enough time to read and decide.
+  This is important because groups over ~10 need a real beat to consider
+  both options, and the host can see the live vote counter to judge
+  when the room has settled.
 - **Host disconnects** — this is a 15-person office game, not a public
   service. If the host closes their tab mid-round, the room will pause
   on the current matchup. Another player can rejoin as themselves via

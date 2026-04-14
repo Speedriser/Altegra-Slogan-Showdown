@@ -42,7 +42,7 @@ export function Landing({ onHost, onJoin, prefilledCode }: Props) {
 
       <div className="mt-16 ornament" />
       <p className="mt-4 text-xs uppercase tracking-[0.24em] text-navy/40">
-        Anonymous submissions · Live bracket · 15-minute format
+        Anonymous submissions · Live bracket · Host-paced rounds
       </p>
     </motion.div>
   );

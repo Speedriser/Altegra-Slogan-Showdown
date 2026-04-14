@@ -27,7 +27,6 @@ export interface Bracket {
 export interface CurrentMatchup {
   roundIdx: number;
   matchupIdx: number;
-  startedAt: number;
 }
 
 export interface Room {

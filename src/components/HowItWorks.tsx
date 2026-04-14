@@ -16,7 +16,7 @@ export const STEPS: Step[] = [
   },
   {
     title: 'Vote',
-    body: 'Slogans are shuffled into a single-elimination bracket. Head-to-head matchups, 20 seconds each.',
+    body: 'Slogans are shuffled into a single-elimination bracket. One head-to-head matchup at a time — the host closes voting when the room is ready.',
   },
   {
     title: 'Crown',
