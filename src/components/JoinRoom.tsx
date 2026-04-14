@@ -4,6 +4,7 @@ import { joinRoom, roomExists } from '../lib/rtdb';
 import { saveSession } from '../lib/storage';
 import { isValidRoomCode } from '../lib/code';
 import { Avatar, avatarUrl } from './Avatar';
+import { HowItWorks } from './HowItWorks';
 
 interface Props {
   uid: string;
@@ -51,16 +52,20 @@ export function JoinRoom({ uid, initialCode = '', onJoined, onBack }: Props) {
       animate={{ opacity: 1, y: 0 }}
       exit={{ opacity: 0, y: -12 }}
       transition={{ duration: 0.4 }}
-      className="max-w-xl mx-auto pt-8 sm:pt-16"
+      className="max-w-2xl mx-auto pt-8 sm:pt-16"
     >
       <button onClick={onBack} className="text-sm text-navy/50 hover:text-navy mb-6">
         ← Back
       </button>
-      <h2 className="font-serif text-4xl sm:text-5xl text-navy leading-tight">
-        Join a game
+      <p className="text-[11px] uppercase tracking-[0.3em] text-accent font-medium mb-3">
+        You're invited
+      </p>
+      <h2 className="font-serif text-4xl sm:text-6xl text-navy leading-[1] tracking-tightest">
+        Join the <em className="text-accent">showdown</em>.
       </h2>
-      <p className="mt-3 text-navy/60">
-        Enter the 4-letter room code the host shared.
+      <p className="mt-4 text-navy/60 max-w-md leading-relaxed">
+        A live tournament to pick Altegra's next tagline. Drop in your
+        code, pick a name, and you're in.
       </p>
 
       <div className="mt-8 card p-5 sm:p-7 flex flex-col gap-5">
@@ -133,6 +138,8 @@ export function JoinRoom({ uid, initialCode = '', onJoined, onBack }: Props) {
           {loading ? 'Joining…' : 'Join room'}
         </button>
       </div>
+
+      <HowItWorks variant="compact" />
     </motion.div>
   );
 }
