@@ -1,0 +1,15 @@
+node_modules
+dist
+dist-ssr
+.vite
+.DS_Store
+*.log
+.env
+.env.local
+.env.*.local
+.vercel
+
+# TS project-references build artifacts
+*.tsbuildinfo
+vite.config.js
+vite.config.d.ts
