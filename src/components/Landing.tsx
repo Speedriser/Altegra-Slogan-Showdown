@@ -38,13 +38,14 @@ export function Landing({ onHost, onJoin, prefilledCode }: Props) {
         Issue No. 01 — Tagline Edition
       </p>
       <h1 className="font-serif text-5xl sm:text-7xl lg:text-8xl tracking-tightest leading-[0.95] text-navy">
-        Find the one
+        Give Altegra
         <br />
-        that <em className="text-accent">sings</em>.
+        its <em className="text-accent">voice</em>.
       </h1>
       <p className="mt-8 max-w-xl text-lg text-navy/70 leading-relaxed">
-        A live bracket tournament for Altegra slogans. Everyone submits a
-        couple. We vote, round by round, until one remains.
+        The tagline we crown today is the one we'll carry — on the site,
+        the decks, the door. Everyone writes a couple, we vote round by
+        round, and the sharpest line wins.
       </p>
       <div className="mt-10 flex flex-col sm:flex-row gap-3">
         <button type="button" onClick={onHost} className="btn-primary text-base">
