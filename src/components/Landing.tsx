@@ -26,7 +26,7 @@ export function Landing({ onHost, onJoin, prefilledCode }: Props) {
       </h1>
       <p className="mt-8 max-w-xl text-lg text-navy/70 leading-relaxed">
         The tagline we crown today is the one we'll carry — on the site,
-        the decks, the door. Everyone writes a couple, we vote round by
+        the decks, the door. Everyone writes one, we vote round by
         round, and the sharpest line wins.
       </p>
       <div className="mt-10 flex flex-col sm:flex-row gap-3">
