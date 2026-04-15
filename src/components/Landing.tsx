@@ -20,9 +20,9 @@ export function Landing({ onHost, onJoin, prefilledCode }: Props) {
         Issue No. 01 — Tagline Edition
       </p>
       <h1 className="font-serif text-5xl sm:text-7xl lg:text-8xl tracking-tightest leading-[0.95] text-navy">
-        Give Altegra
+        Decide the <em className="text-accent">words</em>
         <br />
-        its <em className="text-accent">voice</em>.
+        we'll be known by.
       </h1>
       <p className="mt-8 max-w-xl text-lg text-navy/70 leading-relaxed">
         The tagline we crown today is the one we'll carry — on the site,
