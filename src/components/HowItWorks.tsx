@@ -12,7 +12,7 @@ export const STEPS: Step[] = [
   },
   {
     title: 'Submit',
-    body: 'Everyone writes as many slogans as they like — up to 80 characters each, completely anonymous.',
+    body: 'Each player writes one slogan — up to 80 characters, completely anonymous.',
   },
   {
     title: 'Vote',

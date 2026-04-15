@@ -10,6 +10,7 @@ interface Props {
 }
 
 const MAX_CHARS = 80;
+const MAX_PER_PLAYER = 1;
 
 export function SubmissionPhase({ code, room, uid }: Props) {
   const [draft, setDraft] = useState('');
@@ -37,9 +38,13 @@ export function SubmissionPhase({ code, room, uid }: Props) {
   const playerCount = Object.keys(players).length;
   const submittedCount = submitters.size;
   const allIn = submittedCount >= playerCount && playerCount > 0;
+  const reachedCap = mine.length >= MAX_PER_PLAYER;
 
   const canSubmit =
-    draft.trim().length > 0 && draft.length <= MAX_CHARS && !busy;
+    draft.trim().length > 0 &&
+    draft.length <= MAX_CHARS &&
+    !reachedCap &&
+    !busy;
 
   const handleSubmit = async () => {
     if (!canSubmit) return;
@@ -80,12 +85,12 @@ export function SubmissionPhase({ code, room, uid }: Props) {
         Round 00 · Submissions
       </p>
       <h2 className="font-serif text-4xl sm:text-6xl text-navy leading-[1] tracking-tightest">
-        Drop your <em>best</em>
+        Give us your
         <br />
-        lines.
+        <em>one</em> line.
       </h2>
       <p className="mt-5 text-navy/60 max-w-xl">
-        Submit as many as you want — keep each one short, sharp, and
+        One slogan per player — make it count. Keep it short, sharp, and
         under {MAX_CHARS} characters. All submissions are anonymous;
         authors are revealed only if their slogan wins the whole thing.
       </p>
@@ -99,7 +104,8 @@ export function SubmissionPhase({ code, room, uid }: Props) {
           onChange={(e) => setDraft(e.target.value.slice(0, MAX_CHARS + 20))}
           rows={2}
           placeholder="Altegra — …"
-          className="field resize-none font-serif text-xl italic"
+          className="field resize-none font-serif text-xl italic disabled:opacity-60"
+          disabled={reachedCap}
           onKeyDown={(e) => {
             if ((e.metaKey || e.ctrlKey) && e.key === 'Enter') handleSubmit();
           }}
@@ -113,7 +119,7 @@ export function SubmissionPhase({ code, room, uid }: Props) {
             {draft.length} / {MAX_CHARS}
           </span>
           <span className="text-navy/50">
-            {mine.length} submitted so far
+            {reachedCap ? 'You\u2019re in ✓' : 'Not submitted yet'}
           </span>
         </div>
         {error && <p className="mt-3 text-sm text-red-700">{error}</p>}
@@ -125,16 +131,21 @@ export function SubmissionPhase({ code, room, uid }: Props) {
         >
           {busy
             ? 'Submitting…'
-            : mine.length === 0
-              ? 'Submit slogan'
-              : 'Submit another'}
+            : reachedCap
+              ? 'Slogan submitted'
+              : 'Submit slogan'}
         </button>
+        {reachedCap && (
+          <p className="mt-3 text-xs text-navy/50">
+            Changed your mind? Remove it below and submit a new one.
+          </p>
+        )}
       </div>
 
       {mine.length > 0 && (
         <div className="mt-8">
           <h3 className="text-xs uppercase tracking-[0.2em] text-navy/50 mb-3">
-            Your submissions
+            Your submission
           </h3>
           <ul className="space-y-2">
             <AnimatePresence>
@@ -173,7 +184,8 @@ export function SubmissionPhase({ code, room, uid }: Props) {
           <p className="font-serif text-2xl text-navy mt-1">
             {submittedCount}{' '}
             <span className="text-navy/40">
-              of {playerCount} {playerCount === 1 ? 'player' : 'players'} in
+              of {playerCount}{' '}
+              {playerCount === 1 ? 'player' : 'players'} submitted
             </span>
           </p>
         </div>
