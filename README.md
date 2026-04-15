@@ -75,8 +75,9 @@ so deep-links like `/?r=ABCD` resolve to the SPA.
 
 1. **Lobby** — share the room code or link. Hit *Start submissions* once
    the team is in.
-2. **Submissions** — each player can post 1–2 slogans (max 80 chars).
-   Counter shows progress. Host closes submissions when ready.
+2. **Submissions** — each player can post as many slogans as they like
+   (max 80 chars each). Counter shows progress. Host closes submissions
+   when ready.
 3. **Bracket preview** — the app shuffles submissions into a
    single-elimination bracket (top seeds get byes if the count isn't a
    power of 2). Host presses *Begin next matchup* to start voting.

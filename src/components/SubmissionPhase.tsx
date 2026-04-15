@@ -10,7 +10,6 @@ interface Props {
 }
 
 const MAX_CHARS = 80;
-const MAX_PER_PLAYER = 2;
 
 export function SubmissionPhase({ code, room, uid }: Props) {
   const [draft, setDraft] = useState('');
@@ -40,10 +39,7 @@ export function SubmissionPhase({ code, room, uid }: Props) {
   const allIn = submittedCount >= playerCount && playerCount > 0;
 
   const canSubmit =
-    draft.trim().length > 0 &&
-    draft.length <= MAX_CHARS &&
-    mine.length < MAX_PER_PLAYER &&
-    !busy;
+    draft.trim().length > 0 && draft.length <= MAX_CHARS && !busy;
 
   const handleSubmit = async () => {
     if (!canSubmit) return;
@@ -84,14 +80,14 @@ export function SubmissionPhase({ code, room, uid }: Props) {
         Round 00 · Submissions
       </p>
       <h2 className="font-serif text-4xl sm:text-6xl text-navy leading-[1] tracking-tightest">
-        Give us <em>one</em>
+        Drop your <em>best</em>
         <br />
-        or two.
+        lines.
       </h2>
       <p className="mt-5 text-navy/60 max-w-xl">
-        Keep them short, sharp, and under {MAX_CHARS} characters. All
-        submissions are anonymous — authors are revealed only if their
-        slogan wins the whole thing.
+        Submit as many as you want — keep each one short, sharp, and
+        under {MAX_CHARS} characters. All submissions are anonymous;
+        authors are revealed only if their slogan wins the whole thing.
       </p>
 
       <div className="card mt-8 p-5 sm:p-7">
@@ -104,7 +100,6 @@ export function SubmissionPhase({ code, room, uid }: Props) {
           rows={2}
           placeholder="Altegra — …"
           className="field resize-none font-serif text-xl italic"
-          disabled={mine.length >= MAX_PER_PLAYER}
           onKeyDown={(e) => {
             if ((e.metaKey || e.ctrlKey) && e.key === 'Enter') handleSubmit();
           }}
@@ -118,7 +113,7 @@ export function SubmissionPhase({ code, room, uid }: Props) {
             {draft.length} / {MAX_CHARS}
           </span>
           <span className="text-navy/50">
-            {mine.length} / {MAX_PER_PLAYER} submitted
+            {mine.length} submitted so far
           </span>
         </div>
         {error && <p className="mt-3 text-sm text-red-700">{error}</p>}
@@ -128,11 +123,11 @@ export function SubmissionPhase({ code, room, uid }: Props) {
           disabled={!canSubmit}
           className="btn-primary mt-4 w-full sm:w-auto disabled:opacity-50 disabled:cursor-not-allowed"
         >
-          {mine.length >= MAX_PER_PLAYER
-            ? 'Max reached'
-            : busy
-              ? 'Submitting…'
-              : 'Submit slogan'}
+          {busy
+            ? 'Submitting…'
+            : mine.length === 0
+              ? 'Submit slogan'
+              : 'Submit another'}
         </button>
       </div>
 
@@ -177,7 +172,9 @@ export function SubmissionPhase({ code, room, uid }: Props) {
           </p>
           <p className="font-serif text-2xl text-navy mt-1">
             {submittedCount}{' '}
-            <span className="text-navy/40">of {playerCount} submitted</span>
+            <span className="text-navy/40">
+              of {playerCount} {playerCount === 1 ? 'player' : 'players'} in
+            </span>
           </p>
         </div>
         {allIn && (
