@@ -58,14 +58,17 @@ export function JoinRoom({ uid, initialCode = '', onJoined, onBack }: Props) {
         ← Back
       </button>
       <p className="text-[11px] uppercase tracking-[0.3em] text-accent font-medium mb-3">
-        You're invited
+        Altegra 2027 · You're invited
       </p>
       <h2 className="font-serif text-4xl sm:text-6xl text-navy leading-[1] tracking-tightest">
-        Join the <em className="text-accent">showdown</em>.
+        Help pick where
+        <br />
+        we <em className="text-accent">land</em>.
       </h2>
       <p className="mt-4 text-navy/60 max-w-md leading-relaxed">
-        A live tournament to pick Altegra's next tagline. Drop in your
-        code, pick a name, and you're in.
+        The team is voting on our 2027 conference destination — live,
+        bracket-style. Drop in your code, pick a name, and pitch your
+        dream city.
       </p>
 
       <div className="mt-8 card p-5 sm:p-7 flex flex-col gap-5">
