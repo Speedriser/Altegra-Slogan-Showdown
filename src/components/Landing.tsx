@@ -17,17 +17,17 @@ export function Landing({ onHost, onJoin, prefilledCode }: Props) {
       className="max-w-3xl mx-auto pt-10 sm:pt-20"
     >
       <p className="text-[11px] uppercase tracking-[0.3em] text-accent font-medium mb-5">
-        Issue No. 01 — Tagline Edition
+        Altegra 2027 · Conference Destination Vote
       </p>
       <h1 className="font-serif text-5xl sm:text-7xl lg:text-8xl tracking-tightest leading-[0.95] text-navy">
-        Decide the <em className="text-accent">words</em>
+        Where should we
         <br />
-        we'll be known by.
+        <em className="text-accent">land</em> in 2027?
       </h1>
       <p className="mt-8 max-w-xl text-lg text-navy/70 leading-relaxed">
-        The tagline we crown today is the one we'll carry — on the site,
-        the decks, the door. Everyone writes one, we vote round by
-        round, and the sharpest line wins.
+        One team, one vote, one destination. Everyone pitches a city,
+        we go head-to-head in a live bracket, and the winning spot
+        becomes our 2027 conference home.
       </p>
       <div className="mt-10 flex flex-col sm:flex-row gap-3">
         <button type="button" onClick={onHost} className="btn-primary text-base">
@@ -42,7 +42,7 @@ export function Landing({ onHost, onJoin, prefilledCode }: Props) {
 
       <div className="mt-16 ornament" />
       <p className="mt-4 text-xs uppercase tracking-[0.24em] text-navy/40">
-        Anonymous submissions · Live bracket · Host-paced rounds
+        Anonymous picks · Live bracket · The team decides
       </p>
     </motion.div>
   );
